@@ -26,7 +26,13 @@ publishTo := Some(Resolver.file("local-ivy", file("/home/sam/.ivy2/cache")))
 initialCommands in console := """import gov.nationalarchives.sbt._"""
 
 enablePlugins(ScriptedPlugin)
+
 // set up 'scripted; sbt plugin for testing sbt plugins
 scriptedLaunchOpts ++=
   Seq("-Xmx1024M", "-Dplugin.version=" + version.value)
 
+libraryDependencies += "com.eed3si9n" %% "treehugger" % "0.4.3"
+libraryDependencies += "com.graphql-java" % "graphql-java" % "13.0"
+
+resolvers += Resolver.sonatypeRepo("public")
+resolvers += Resolver.mavenCentral
